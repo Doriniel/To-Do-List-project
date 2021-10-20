@@ -1,38 +1,49 @@
-    <!DOCTYPE html>
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-        <title>
-            To Do List
-        </title>
-    </head>
-    <body>
-        <div class="container">
-            <div class="block1">
-            </div>
-            <div class="main-block">
-                <h2>To Do List</h2>
-                <div class="sorting">
-                    <img class="sort" alt="sort-icon" src="./img/sort-grey-down.svg">
-                    <img class="sort" alt="sort-icon" src="./img/sort-grey-up.svg">
-                    <img class="sort" alt="sort-icon" src="./img/sort-black-active-down.svg">
-                    <img class="sort" alt="sort-icon" src="./img/sort-black-active-up.svg">
-                </div>
-                <div class="tasker">
-                    <input type="text" class="task">
-                    <img class="cross" alt="delete-task" src="./img/cross-inactive.svg">
-                </div>
-                <button type="button" class="add-task">
-                    <span>
-                        +
-                    </span>
-                    Добавить
-                </button> 
-            </div>
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>
+        To Do List
+    </title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="yellow-block">
         </div>
-        <script src="./script.js"></script>
-    </body>
-    </html>
+        <div class="main-block">
+            <h2>To Do List</h2>
+            <div class="sorting">
+                <button class="sort-up" type="button"></button>
+                <button class="sort-down" type="button"></button>
+            </div>
+            <div class="tasker">
+                <div class="task-block">
+                    <input class="task-input" type="text">
+                    <button class="x-button" type="button"></button>
+                </div>
+                <div class="task-block">
+                    <input class="task-input" type="text">
+                    <button class="x-button" type="button"></button>
+                </div>
+                <div class="task-block">
+                    <input class="task-input" type="text">
+                    <button class="x-button" type="button"></button>
+                </div>
+            </div>
+            <button type="button" class="button-add">
+                <span>
+                    +
+                </span>
+                Добавить
+            </button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

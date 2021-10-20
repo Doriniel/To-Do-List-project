@@ -2,4 +2,149 @@
 
 * {
     font-family: Roboto, Arial, sans-serif;
+    box-sizing: border-box;
 }
+
+.container {
+    width: 336px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #C4C4C4;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.yellow-block {
+    background-color: #FFDC40;
+    height: 28px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 30.4px;
+    margin: 18px 0px 20px 0px;
+}
+
+.main-block {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 19px;
+}
+
+/* ------ Блок сортировки, включая кнопки ----- */
+.sorting {
+    margin-bottom: 12px;
+    align-self: flex-end;
+}
+.sort-up {
+    background-image: url(./img/sort-grey-up.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 25px;
+    height: 15px;
+    border: 0;
+
+}
+.sort-down {
+    background-image: url(./img/sort-grey-down.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 25px;
+    height: 15px;
+    border: 0;
+
+}
+.sort-up:hover {
+    background-image: url(./img/sort-black-active-up.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 25px;
+    height: 15px;
+    border: 0;
+}
+
+.sort-down:hover {
+    background-image: url(./img/sort-black-active-down.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 25px;
+    height: 15px;
+    border: 0;
+}
+/* ------Окончание Блока сортировки ----- */
+
+/* ------------ Блок с задачами ----------- */
+.tasker {
+    width: 286px;
+    margin-bottom: 18px;
+    border:1px solid #C4C4C4;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.task-block {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: none;
+    margin: 5px 0px;
+}
+
+.task-input {
+    margin-right: 15px;
+    border: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.41px;
+}
+
+/* ------------ Окончание Блока с задачами ----------- */
+
+/* Крестики в строках задач */
+.x-button {
+    display: block;
+    background-image: url(./img/cross-inactive.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    border: 0;
+}
+.x-button:hover {
+    display: block;
+    background-image: url(./img/cross-violet-active.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    border: 0;
+}
+
+/* Кнопка "Добавить" */
+.button-add {
+    background-color: #833AE0;
+    color: white;
+    width: 150px;
+    height: 42px;
+    border-radius: 71px;
+    border: 1px solid #585858;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.button-add:hover {
+    background-color: #bc49ff;
+    color: white;
+    width: 150px;
+    height: 42px;
+    border-radius: 71px;
+    border: 1px solid #585858;
+    box-shadow: 0px 4px 6px 0px #00000040;
+}
+/* Окончание стиля Кнопки "Добавить" */
