@@ -8,48 +8,53 @@
 
 
 
-let array = [];
+let array = ['123456', 'kdfsdhfhs'];
 // let arr = [];
 
 const tasker = document.querySelector('.tasker');
+
+const firstTask = document.querySelector('.first-task');
+const otherTasks = document.querySelector('.other-tasks');
+
 const task = document.querySelector('.task-input');
 const addTaskButton = document.querySelector('.button-add');
-
 // console.dir(addTaskButton);
 
 // Добавили обработчик события "клик" на кнопку "Добавить" (addTaskButton).
 
-addTaskButton.addEventListener('click', clickHandler);
+// addTaskButton.addEventListener('click', clickHandler);
 
 addTaskButton.addEventListener('click', addHandler);
 
 // Что делает эта функция? эта функция и есть сам обработчик события, т.е. что происходит при клике на кнопку (что браузер делает при возникновении события).
 
-function addHandler(event) {
-    tasker.innerHTML = ''; // здесь мы обнуляем содержимое объекта 'tasker' - который есть div с классом .tasker - мы его нашли квериселектором выше.
+function addHandler() {
+    otherTasks.innerHTML = ''; // здесь мы обнуляем содержимое объекта 'otherTasks' - который есть div с классом .other-tasks - его выбрали квериселектором выше.
+    
     array.forEach((item) => {
         tasker.append(createTaskElement(item));
-        // здесь мы запускаем forEach для каждого элемента массива array - и для каждого мы делаем:
-        // tasker.append - подвязываем вниз элемента tasker (окошко с задачами) новый элемент.
-        (createTaskElement(item)) // это то, ЧТО мы подвязываем.
     });
-
-    // event.target.innerText = 'Нажала кнопку и меняю на ней текст';
-    // event.target.style.backgroundColor = "aquamarine";
-    // event.target.style.color = "black";
 }
 
+// здесь мы запускаем forEach для каждого элемента массива array - и для каждого мы делаем:
+// tasker.append - подвязываем вниз элемента tasker (окошко с задачами) новый элемент.
+// (createTaskElement(item)) // это то, ЧТО мы подвязываем.
+// event.target.innerText = 'Нажала кнопку и меняю на ней текст';
+// event.target.style.backgroundColor = "aquamarine";
+// event.target.style.color = "black";
 
+
+// Пробовала как работает:
 // task.addEventListener('change', (event) => {
 //     console.log(event.target);
 //     console.log(event.target.value);
 // });
 
 
-function clickHandler() {
-    array.push(task.value);
-    console.log(array);
-}
+// function clickHandler() {
+//     array.push(task.value);
+//     console.log(array);
+// }
 
 
 // Эта функция делает "отрисовку" таскера на странице при каждом запуске события - клика по кнопке "Добавить".
@@ -74,6 +79,11 @@ function createTaskElement(task) {
     block.append(input, xButton);
     return block;
 }
+
+
+
+
+
 
 
 

@@ -22,18 +22,15 @@
                 <button class="sort-down" type="button"></button>
             </div>
             <div class="tasker">
-                <div class="task-block">
-                    <input class="task-input first" type="text">
-                    <button class="x-button" type="button"></button>
+                <div class="first-task">
+                    <!-- здесь делаем отдельный div для первой задачи - "в начальном состоянии список содержит одну пустую запись" -->
+                    <div class="task-block">
+                        <input class="task-input" type="text">
+                        <button class="x-button" type="button"></button>
+                    </div>
                 </div>
-                <!-- <div class="task-block">
-                    <input class="task-input" type="text">
-                    <button class="x-button" type="button"></button>
+                <div class="other-tasks">
                 </div>
-                <div class="task-block">
-                    <input class="task-input" type="text">
-                    <button class="x-button" type="button"></button>
-                </div> -->
             </div>
             <button type="button" class="button-add">
                 <span>
@@ -42,6 +39,7 @@
                 Добавить
             </button>
         </div>
+    </div>
     </div>
     <script src="./script.js"></script>
 </body>
