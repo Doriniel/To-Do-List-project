@@ -6,24 +6,53 @@
 // в каком порядке будет происходить сортировка (прямом или обратном).
 // 5) В начальном состоянии список содержит одну пустую запись.
 
-// 1)
 
-let array = [1,3,5,"sunshine"];
+
+let array = [];
+// let arr = [];
 
 const tasker = document.querySelector('.tasker');
-const task = document.querySelectorAll('.task-input');
+const task = document.querySelector('.task-input');
+const addTaskButton = document.querySelector('.button-add');
 
-const addTask = document.querySelector('.button-add');
-console.dir(addTask);
+// console.dir(addTaskButton);
 
-addTask.addEventListener('click', addHandler);
+// Добавили обработчик события "клик" на кнопку "Добавить" (addTaskButton).
 
-function addHandler() {
-    tasker.innerHTML = '';
+addTaskButton.addEventListener('click', clickHandler);
+
+addTaskButton.addEventListener('click', addHandler);
+
+// Что делает эта функция? эта функция и есть сам обработчик события, т.е. что происходит при клике на кнопку (что браузер делает при возникновении события).
+
+function addHandler(event) {
+    tasker.innerHTML = ''; // здесь мы обнуляем содержимое объекта 'tasker' - который есть div с классом .tasker - мы его нашли квериселектором выше.
     array.forEach((item) => {
         tasker.append(createTaskElement(item));
-    })
+        // здесь мы запускаем forEach для каждого элемента массива array - и для каждого мы делаем:
+        // tasker.append - подвязываем вниз элемента tasker (окошко с задачами) новый элемент.
+        (createTaskElement(item)) // это то, ЧТО мы подвязываем.
+    });
+
+    // event.target.innerText = 'Нажала кнопку и меняю на ней текст';
+    // event.target.style.backgroundColor = "aquamarine";
+    // event.target.style.color = "black";
 }
+
+
+// task.addEventListener('change', (event) => {
+//     console.log(event.target);
+//     console.log(event.target.value);
+// });
+
+
+function clickHandler() {
+    array.push(task.value);
+    console.log(array);
+}
+
+
+// Эта функция делает "отрисовку" таскера на странице при каждом запуске события - клика по кнопке "Добавить".
 
 function createTaskElement(task) {
     let block = document.createElement('div');
@@ -46,8 +75,9 @@ function createTaskElement(task) {
     return block;
 }
 
-// task.forEach((item) => {
-//     console.dir(item);
-// })
+
+
+
+
 
 
