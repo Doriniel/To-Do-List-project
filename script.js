@@ -14,23 +14,81 @@ const firstTask = document.querySelector('.first-task');
 const otherTasks = document.querySelector('.other-tasks');
 let task = document.querySelector('.task-input');
 const addTaskButton = document.querySelector('.button-add');
-// console.dir(addTaskButton);
-// Добавили обработчик события "клик" на кнопку "Добавить" (addTaskButton).
-// addTaskButton.addEventListener('click', clickHandler);
+
+const sort = document.querySelector('.sort');
+// const sorting = document.querySelector('div');
+// let data = 'null';
+
+
 
 addTaskButton.addEventListener('click', addHandler);
-// Что делает эта функция? эта функция и есть сам обработчик события, т.е. что происходит при клике на кнопку 
-// (что браузер делает при возникновении события).
 
-function addHandler() {
-    otherTasks.innerHTML = ''; // здесь мы обнуляем содержимое объекта 'otherTasks' - 
-    // который есть div с классом .other-tasks - его выбрали квериселектором выше.
-    array.push(task.value);
-    task.value = '';
+sort.addEventListener('click', sortButtonChange);
+
+
+
+function sortButtonChange(event) {
+    event.target.classList.toggle('sort-up');
+
+    if (event.target.classList.contains('sort-up')) {
+        sortHandlerAscending();
+    } else {
+        sortHandlerDescending();
+    }
+};
+
+
+function sortHandlerAscending() {
+    otherTasks.innerHTML = '';
+    array.sort((a, b) => {
+        if (a < b) {
+            return -1;
+        }
+        if (a > b) {
+            return 1;
+        }
+        if (a === b) {
+            return 0;
+        }
+    })
+
     array.forEach((item) => {
-    otherTasks.append(createTaskElement(item));
+        otherTasks.append(createTaskElement(item));
     });
 }
+
+function sortHandlerDescending() {
+    otherTasks.innerHTML = '';
+
+    array.sort((a, b) => {
+        if (a > b) {
+            return -1;
+        }
+        if (a < b) {
+            return 1;
+        }
+        if (a === b) {
+            return 0;
+        }
+    })
+    
+    array.forEach((item) => {
+        otherTasks.append(createTaskElement(item));
+    });
+}
+
+
+function addHandler() {
+    otherTasks.innerHTML = '';
+
+    array.push(task.value);
+    task.value = '';
+
+    array.forEach((item) => {
+        otherTasks.append(createTaskElement(item));
+    });
+}
+
 
 function createTaskElement(task) {
     let block = document.createElement('div');
@@ -46,16 +104,44 @@ function createTaskElement(task) {
     xButton.addEventListener('click', xButtonHandler);
 
     function xButtonHandler() {
+        array = array.filter((item) => item != task)
         block.remove();
     };
 
     block.append(input, xButton);
-    return block;
+    return block
 }
 
 
 
 
+
+
+
+
+// let sortButtonCreate = (() => {
+//     sortingNew = document.createElement('div');
+//     sortingNew.classList.add('sorting');
+//     mainBlock.append(sortingNew);
+
+//     sortUpNew = document.createElement('button');
+//     sortUpNew.classList.add('sort-up');
+//     sorting.append(sortUpNew);
+// });
+
+// console.log(sortButtonCreate);
+// console.dir(sortButtonCreate);
+
+
+// function sortUpHandler () {
+//     otherTasks.innerHTML = '';
+
+//     data = array.sort((a,b) => b - a);
+
+//     data.forEach((item) => {
+//         otherTasks.append(createTaskElement(item));
+//     });
+// }
 
 
 // здесь мы запускаем forEach для каждого элемента массива array - и для каждого мы делаем:
@@ -82,8 +168,20 @@ function createTaskElement(task) {
 
 
 
+// console.dir(addTaskButton);
+// Добавили обработчик события "клик" на кнопку "Добавить" (addTaskButton).
+// addTaskButton.addEventListener('click', clickHandler);
 
 
+
+// Что делает эта функция? эта функция и есть сам обработчик события, т.е. что происходит при клике на кнопку 
+// (что браузер делает при возникновении события).
+
+
+
+// data.forEach((item) => {
+    //     otherTasks.append(createTaskElement(item));
+    // });
 
 
 

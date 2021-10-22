@@ -40,42 +40,30 @@ h2 {
     margin-right: 30px;
     align-self: flex-end;
 }
-.sort-up {
-    display: none;
-    background-image: url(./img/sort-grey-up.svg);
-    background-repeat: no-repeat;
-    background-color: transparent;
-    width: 25px;
-    height: 15px;
-    border: 0;
-
-}
-.sort-down {
+.sort{
     background-image: url(./img/sort-grey-down.svg);
     background-repeat: no-repeat;
     background-color: transparent;
     width: 25px;
     height: 15px;
     border: 0;
-
 }
+
+.sort:hover {
+    background-image: url(./img/sort-black-active-down.svg);
+  
+}
+
+.sort-up {
+    background-image: url(./img/sort-grey-up.svg);
+}
+
+
 .sort-up:hover {
     background-image: url(./img/sort-black-active-up.svg);
-    background-repeat: no-repeat;
-    background-color: transparent;
-    width: 25px;
-    height: 15px;
-    border: 0;
+  
 }
 
-.sort-down:hover {
-    background-image: url(./img/sort-black-active-down.svg);
-    background-repeat: no-repeat;
-    background-color: transparent;
-    width: 25px;
-    height: 15px;
-    border: 0;
-}
 /* ------Окончание Блока сортировки ----- */
 
 /* ------------ Блок с задачами ----------- */
