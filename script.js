@@ -7,24 +7,27 @@
 // 5) В начальном состоянии список содержит одну пустую запись.
 // 6) drag and drop.
 
-let array = [];
+let array = [''];
 
 const tasker = document.querySelector('.tasker');
 const firstTask = document.querySelector('.first-task');
 const otherTasks = document.querySelector('.other-tasks');
 let task = document.querySelector('.task-input');
 const addTaskButton = document.querySelector('.button-add');
-
 const sort = document.querySelector('.sort');
-// const sorting = document.querySelector('div');
-// let data = 'null';
 
-
+renderList();
 
 addTaskButton.addEventListener('click', addHandler);
-
 sort.addEventListener('click', sortButtonChange);
 
+
+function renderList () {
+    otherTasks.innerHTML = '';
+    array.forEach((item, index) => {
+        otherTasks.append(createTaskElement(item, index));
+    });
+}
 
 
 function sortButtonChange(event) {
@@ -39,8 +42,7 @@ function sortButtonChange(event) {
 
 
 function sortHandlerAscending() {
-    otherTasks.innerHTML = '';
-    array.sort((a, b) => {
+        array.sort((a, b) => {
         if (a < b) {
             return -1;
         }
@@ -52,14 +54,10 @@ function sortHandlerAscending() {
         }
     })
 
-    array.forEach((item) => {
-        otherTasks.append(createTaskElement(item));
-    });
+    renderList();
 }
 
 function sortHandlerDescending() {
-    otherTasks.innerHTML = '';
-
     array.sort((a, b) => {
         if (a > b) {
             return -1;
@@ -71,50 +69,45 @@ function sortHandlerDescending() {
             return 0;
         }
     })
-    
-    array.forEach((item) => {
-        otherTasks.append(createTaskElement(item));
-    });
+
+    renderList();
 }
 
 
 function addHandler() {
-    otherTasks.innerHTML = '';
-
-    array.push(task.value);
-    task.value = '';
-
-    array.forEach((item) => {
-        otherTasks.append(createTaskElement(item));
-    });
+    array.push('');
+    renderList();
 }
 
 
-function createTaskElement(task) {
+function createTaskElement(arrayEl, index) {
     let block = document.createElement('div');
     block.classList.add('task-block');
 
     let input = document.createElement('input');
     input.classList.add('task-input');
-    input.value = task;
 
+    input.value = arrayEl;
+    input.id = index;
+    input.addEventListener('input', ((event) => {
+        let index = event.target.id;
+        let value = event.target.value;
+        array[index] = value;
+    }));
+    
     let xButton = document.createElement('button');
     xButton.classList.add('x-button');
 
     xButton.addEventListener('click', xButtonHandler);
 
     function xButtonHandler() {
-        array = array.filter((item) => item != task)
+        array = array.filter((item) => item != arrayEl)
         block.remove();
     };
 
     block.append(input, xButton);
     return block
 }
-
-
-
-
 
 
 
