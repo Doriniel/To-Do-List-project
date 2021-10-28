@@ -19,10 +19,11 @@ const sort = document.querySelector('.sort');
 renderList();
 
 addTaskButton.addEventListener('click', addHandler);
+
 sort.addEventListener('click', sortButtonChange);
 
 
-function renderList () {
+function renderList() {
     otherTasks.innerHTML = '';
     array.forEach((item, index) => {
         otherTasks.append(createTaskElement(item, index));
@@ -31,7 +32,7 @@ function renderList () {
 
 
 function sortButtonChange(event) {
-    event.target.classList.toggle('sort-up');
+    event.target.classList.toggle('sort-up'); //здесь при нажатии на кнопку сортировки присваиваем ей каждый раз новый класс (.toggle)- если есть, то меняет на другой.
 
     if (event.target.classList.contains('sort-up')) {
         sortHandlerAscending();
@@ -42,7 +43,7 @@ function sortButtonChange(event) {
 
 
 function sortHandlerAscending() {
-        array.sort((a, b) => {
+    array.sort((a, b) => {
         if (a < b) {
             return -1;
         }
@@ -53,7 +54,6 @@ function sortHandlerAscending() {
             return 0;
         }
     })
-
     renderList();
 }
 
@@ -69,7 +69,6 @@ function sortHandlerDescending() {
             return 0;
         }
     })
-
     renderList();
 }
 
@@ -83,34 +82,49 @@ function addHandler() {
 function createTaskElement(arrayEl, index) {
     let block = document.createElement('div');
     block.classList.add('task-block');
-
     let input = document.createElement('input');
     input.classList.add('task-input');
 
+    let xButton = document.createElement('button');
+    xButton.classList.add('x-button');
+    xButton.addEventListener('click', xButtonHandler);
+
     input.value = arrayEl;
     input.id = index;
+
     input.addEventListener('input', ((event) => {
         let index = event.target.id;
         let value = event.target.value;
         array[index] = value;
     }));
-    
-    let xButton = document.createElement('button');
-    xButton.classList.add('x-button');
 
-    xButton.addEventListener('click', xButtonHandler);
 
-    function xButtonHandler() {
-        array = array.filter((item) => item != arrayEl)
-        block.remove();
+    function xButtonHandler(event) {
+        let taskToDelete = event.target.previousElementSibling;
+        let parent = event.target.parentElement;
+
+        array = array.filter(item => item != taskToDelete.value)
+
+        if (array.length >= 1) {
+            parent.remove();
+        } else if (array.length = 0) {
+            // console.log(array);
+            // taskToDelete.value = null;
+        }
     };
-
+    
     block.append(input, xButton);
     return block
 }
 
 
 
+
+
+// function xButtonHandler() {
+//     array = array.filter((item, index) => item != array[index]);
+//     block.remove()
+// };
 
 // let sortButtonCreate = (() => {
 //     sortingNew = document.createElement('div');
@@ -177,5 +191,42 @@ function createTaskElement(arrayEl, index) {
     // });
 
 
+    // function xButtonHandler() {
+    //     console.log(array);
+    //     if (array.length > 1) {
+    //         array = array.filter(item => item != arrayEl);
+    //         block.remove();
+    //     } else if (array.length ===1) {
+    //         input.value = "";
+    //     }
+    // };
+
+
+
+
+    // if (array.length > 1) {
+    //     array = array.filter(item => item != arrayEl)
+    //     block.remove();
+    // } else if (array.length === 1) {
+    //     input.value = "";
+    // }
+
+
+    // array = array.filter((item,index) => {item[index] != input.value[input.id]});
+
+
+    // array = array.filter((item,index) => {
+    //     return item[index] != taskToDelete.value[taskToDelete.id];
+
+
+
+     // array = array.filter((item,index) => {
+        //     return item[index] != taskToDelete.value[taskToDelete.id];
+        //     // console.log(item, index)
+        //     // return item[index];
+        // });
+        // parent.remove();
+        // console.log(array);
+        // block.remove();
 
 
